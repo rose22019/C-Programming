@@ -1,5 +1,3 @@
-leap year
-
 #include <stdio.h>
 int main(){
     int year;
