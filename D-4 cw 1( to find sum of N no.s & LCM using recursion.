@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+int sum(int n);
+int gcd(int a, int b);
+int lcm(int a, int b);
+
+int main() {
+    int n, num;
+    printf("Enter the value of n: ");
+    scanf("%d", &n);
+    printf("Enter a number to find its lcm: ");
+    scanf("%d", &num);
+
+    int total_sum = sum(n);
+    int lcm_value = lcm(num, total_sum);
+
+    printf("Sum of first %d numbers: %d\n", n, total_sum);
+    printf("LCM of %d and sum of first %d numbers: %d\n", num, n, lcm_value);
+
+    return 0;
+}
+
+int sum(int n) {
+    if (n == 0) {
+        return 0;
+    } else {
+        return n + sum(n - 1);
+    }
+}
+
+int gcd(int a, int b) {
+    if (b == 0) {
+        return a;
+    } else {
+        return gcd(b, a % b);
+    }
+}
+
+int lcm(int a, int b) {
+    int gcd_value = gcd(a, b);
+    return (a * b) / gcd_value;
+}
