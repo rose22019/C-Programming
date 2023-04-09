@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include<conio.h>
+#include <string.h>
+
+main() 
+{
+    char names[100][50];
+    int num_names, i, choice;
+    
+    printf("Enter the number of names: ");
+    scanf("%d", &num_names);
+    
+    for (i = 0; i < num_names; i++) {
+        printf("Enter name #%d: ", i+1);
+        scanf("%s", names[i]);
+    }
+    
+    printf("Enter 1 to sort names in ascending order, 2 to sort in descending order: ");
+    scanf("%d", &choice);
+    
+    for (i = 0; i < num_names - 1; i++) {
+        int j;
+        for (j = i + 1; j < num_names; j++) {
+            int compare_result = strcmp(names[i], names[j]);
+            if ((compare_result > 0 && choice == 1) || (compare_result < 0 && choice == 2)) {
+                char temp[50];
+                strcpy(temp, names[i]);
+                strcpy(names[i], names[j]);
+                strcpy(names[j], temp);
+            }
+  }
+    }
+    
+    printf("Sorted names:\n");
+    for (i = 0; i < num_names; i++) {
+        printf("%s\n", names[i]);
+    }
+    
+}
